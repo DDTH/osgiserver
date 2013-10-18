@@ -16,15 +16,25 @@ import org.apache.felix.main.AutoProcessor;
 
 public class StandaloneBootstrap {
 
+    private static File ORESTWS_HOME;
+    private static File ORESTWS_OSGI_PROPERTIES;
+    
+    
     public static void main(String[] args) throws IOException {
+        checkEnv();
         initFelixFramework();
         // initBundleConfigDao();
         // startAllBundles();
     }
 
+    private static void checkEnv() {
+        JAVA_OPTS+=("-Dorestws.home=$ORESTWS_HOME")
+                JAVA_OPTS+=("-Dorestws.osgi.properties=$ORESTWS_HOME/bin/osgi-felix.properties")
+    }
+
     private static void initFelixFramework() throws IOException {
         Properties configProps = loadConfigProperties();
-        System.out.println("hello");
+        System.out.println(configProps);
     }
 
     private static Properties loadConfigProperties() throws IOException {
@@ -53,6 +63,11 @@ public class StandaloneBootstrap {
             configProps.setProperty(name, value);
         }
 
+        return configProps;
+    }
+
+    private static void _test(Properties configProps) {
+        File configFile = null;
         // configure Felix auto-deploy directory
         String sAutoDeployDir = configProps.getProperty(AutoProcessor.AUTO_DEPLOY_DIR_PROPERY);
         if (sAutoDeployDir == null) {
@@ -60,15 +75,15 @@ public class StandaloneBootstrap {
                     + AutoProcessor.AUTO_DEPLOY_DIR_PROPERY + "] in file "
                     + configFile.getAbsolutePath());
         }
-        File fAutoDeployDir = new File(renderOsgiContainerLocation(), sAutoDeployDir);
+        // File fAutoDeployDir = new File(renderOsgiContainerLocation(),
+        // sAutoDeployDir);
         // if (LOGGER.isDebugEnabled()) {
         // LOGGER.debug(AutoProcessor.AUTO_DEPLOY_DIR_PROPERY + ": "
         // + fAutoDeployDir.getAbsolutePath());
         // }
-        configProps.setProperty(AutoProcessor.AUTO_DEPLOY_DIR_PROPERY,
-                fAutoDeployDir.getAbsolutePath());
+        // configProps.setProperty(AutoProcessor.AUTO_DEPLOY_DIR_PROPERY,
+        // fAutoDeployDir.getAbsolutePath());
 
-        return configProps;
         // IdGenerator idGen =
         // IdGenerator.getInstance(IdGenerator.getMacAddr());
         // DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");

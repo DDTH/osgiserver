@@ -1,7 +1,12 @@
 @ECHO OFF
-REM ant build
-SET HAZELCAST_SERVER_HOME=%~dp0
-SET HAZELCAST_SERVER_HOME=%HAZELCAST_SERVER_HOME%\..
+
+REM ==================================================
+REM ORESTWS start script for Windows
+REM ==================================================
+
+
+SET ORESTWS_HOME=%~dp0
+SET ORESTWS_HOME=%ORESTWS_HOME%\..
 
 IF [%1]==[] GOTO default
 IF [%1]==[/?] GOTO help
@@ -10,7 +15,7 @@ IF [%1]==[/h] GOTO help
 IF [%1]==[/H] GOTO help
 IF [%1]==[-h] GOTO help
 IF [%1]==[-H] GOTO help
-SET HAZELCAST_MEMORY_MB=%1
+SET JAVA_MEM_MB=%1
 GOTO exec
 
 :help
@@ -20,14 +25,14 @@ ECHO     server_start.bat /?
 GOTO end
 
 :default
-SET HAZELCAST_MEMORY_MB=64
+SET JAVA_MEM_MB=64
 
 :exec
 REM -XX:-UseGCOverheadLimit
-SET OPTS_JVM=-server -Xms%HAZELCAST_MEMORY_MB%m -Xmx%HAZELCAST_MEMORY_MB%m -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true -XX:+UseParNewGC -XX:+UseConcMarkSweepGC
-SET OPTS_GC_LOG=-XX:PrintFLSStatistics=1 -XX:PrintCMSStatistics=1 -XX:+PrintTenuringDistribution -XX:+PrintGCDetails -XX:+PrintGCDateStamps -verbose:gc -Xloggc:%HAZELCAST_SERVER_HOME%\logs\garbage.log
-SET OPTS_HAZELCAST=-DhazelcastServerHome=%HAZELCAST_SERVER_HOME% -DconfigFile=%HAZELCAST_SERVER_HOME%\config\hazelcast.xml
-SET OPTS_CLASSPATH=-classpath "%HAZELCAST_SERVER_HOME%\lib;%HAZELCAST_SERVER_HOME%\lib\*"
-java %OPTS_JVM% %OPTS_GC_LOG% %OPTS_HAZELCAST% %OPTS_CLASSPATH% ddth.hazelcastserver.HazelcastServerBootstrap
+SET OPTS_JVM=-server -Xms%JAVA_MEM_MB%m -Xmx%JAVA_MEM_MB%m -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true -XX:+UseParNewGC -XX:+UseConcMarkSweepGC
+SET OPTS_GC_LOG=-XX:PrintFLSStatistics=1 -XX:PrintCMSStatistics=1 -XX:+PrintTenuringDistribution -XX:+PrintGCDetails -XX:+PrintGCDateStamps -verbose:gc -Xloggc:%ORESTWS_HOME%\logs\garbage.log
+SET OPTS_ORESTWS=-Dorestws.home=%ORESTWS_HOME% -Dorestws.osgi.properties=%ORESTWS_HOME%\bin\osgi-felix.properties
+SET OPTS_CLASSPATH=-classpath "%ORESTWS_HOME%\lib;%ORESTWS_HOME%\lib\*"
+java %OPTS_JVM% %OPTS_GC_LOG% %OPTS_ORESTWS% %OPTS_CLASSPATH% com.github.ddth.orestws.bootstrap.StandaloneBootstrap
 
 :end

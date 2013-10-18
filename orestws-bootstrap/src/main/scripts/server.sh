@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# ==================================================
+# ORESTWS start/stop script for *NIX
+# ==================================================
+
 # from http://stackoverflow.com/questions/242538/unix-shell-script-find-out-which-directory-the-script-file-resides
 pushd $(dirname "${0}") > /dev/null
 _basedir=$(pwd -L)
