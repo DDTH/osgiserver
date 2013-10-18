@@ -21,7 +21,8 @@ _appName_=ORESTWS
 JAVA=$(which java)
 JAVA_OPTS="-server -Xms${JAVA_MEM_MB}m -Xmx${JAVA_MEM_MB}m -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true -XX:+UseParNewGC -XX:+UseConcMarkSweepGC"
 JAVA_OPTS+=("-XX:PrintFLSStatistics=1 -XX:PrintCMSStatistics=1 -XX:+PrintTenuringDistribution -XX:+PrintGCDetails -XX:+PrintGCDateStamps -verbose:gc -Xloggc:$ORESTWS_HOME/logs/garbage.log")
-JAVA_OPTS+=("-DosgiConfigFile=$ORESTWS_HOME/bin/osgi-felix.properties")
+JAVA_OPTS+=("-Dorestws.home=$ORESTWS_HOME")
+JAVA_OPTS+=("-Dorestws.osgi.properties=$ORESTWS_HOME/bin/osgi-felix.properties")
 JAVA_OPTS+=("-classpath $ORESTWS_HOME/lib:$ORESTWS_HOME/lib/*")
 JAVA_OPTS+=("com.github.ddth.orestws.bootstrap.StandaloneBootstrap")
 
