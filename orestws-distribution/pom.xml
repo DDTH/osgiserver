@@ -95,6 +95,25 @@
 			<artifactId>org.apache.felix.shell.remote</artifactId>
 			<version>1.1.2</version>
 		</dependency>
+
+		<!-- dist/startup_bundles/03.google -->
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>15.0</version>
+		</dependency>
+
+		<!-- dist/startup_bundles/99.others -->
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.fileinstall</artifactId>
+			<version>3.2.6</version>
+		</dependency>
 	</dependencies>
 
 	<build>

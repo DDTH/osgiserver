@@ -86,9 +86,23 @@
 			<outputDirectory>dist/startup_bundles/02.felix</outputDirectory>
 			<useProjectArtifact>false</useProjectArtifact>
 			<includes>
-				<include>org.apache.felix:*</include>
+				<include>org.apache.felix:org.apache.felix.shell*</include>
 			</includes>
 		</dependencySet>
+		<dependencySet>
+			<outputDirectory>dist/startup_bundles/03.google</outputDirectory>
+			<useProjectArtifact>false</useProjectArtifact>
+			<includes>
+				<include>com.google.*</include>
+			</includes>
+		</dependencySet>
+		<dependencySet>
+            <outputDirectory>dist/startup_bundles/99.others</outputDirectory>
+            <useProjectArtifact>false</useProjectArtifact>
+            <includes>
+                <include>org.apache.felix:org.apache.felix.fileinstall</include>
+            </includes>
+        </dependencySet>
 	</dependencySets>
 
 	<moduleSets>
