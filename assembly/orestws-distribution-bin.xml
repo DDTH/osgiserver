@@ -25,6 +25,11 @@
 
 	<files>
 		<file>
+			<source>../orestws-bootstrap/src/main/scripts/log4j.properties</source>
+			<outputDirectory>dist/lib</outputDirectory>
+			<filtered>true</filtered>
+		</file>
+		<file>
 			<source>../README.md</source>
 			<outputDirectory>dist</outputDirectory>
 			<filtered>true</filtered>
@@ -32,6 +37,14 @@
 		<file>
 			<source>../LICENSE.txt</source>
 			<outputDirectory>dist</outputDirectory>
+		</file>
+		<file>
+			<source>../EMPTY</source>
+			<outputDirectory>dist/startup_bundles</outputDirectory>
+		</file>
+		<file>
+			<source>../EMPTY</source>
+			<outputDirectory>dist/runtime_bundles</outputDirectory>
 		</file>
 	</files>
 
