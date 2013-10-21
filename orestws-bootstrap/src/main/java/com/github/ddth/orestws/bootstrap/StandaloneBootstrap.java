@@ -152,15 +152,17 @@ public class StandaloneBootstrap {
         } else {
             // make sure bundles are deployed and started in order!
             File[] files = fileOrDir.listFiles();
-            Arrays.sort(files, new Comparator<File>() {
-                @Override
-                public int compare(File file1, File file2) {
-                    return file1.compareTo(file2);
-                }
-            });
-            for (File f : files) {
-                if (!f.getName().startsWith(".")) {
-                    _autoDeployBundles(f, framework);
+            if (files != null && files.length > 0) {
+                Arrays.sort(files, new Comparator<File>() {
+                    @Override
+                    public int compare(File file1, File file2) {
+                        return file1.compareTo(file2);
+                    }
+                });
+                for (File f : files) {
+                    if (!f.getName().startsWith(".")) {
+                        _autoDeployBundles(f, framework);
+                    }
                 }
             }
         }
