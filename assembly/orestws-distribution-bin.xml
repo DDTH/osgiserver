@@ -54,6 +54,33 @@
 	<dependencySets>
 		<dependencySet>
 			<outputDirectory>dist/lib</outputDirectory>
+			<!-- since we use moduleSets to filter project artifacts, useProjectArtifact 
+				should be false -->
+			<useProjectArtifact>false</useProjectArtifact>
+			<includes>
+				<include>org.apache.felix:org.apache.felix.framework</include>
+				<include>org.apache.felix:org.apache.felix.main</include>
+				<include>org.slf4j:slf4j-api</include>
+				<include>org.slf4j:slf4j-log4j12</include>
+				<include>commons-io:commons-io</include>
+				<include>org.apache.commons:commons-lang3</include>
+			</includes>
+		</dependencySet>
+		<dependencySet>
+			<outputDirectory>dist/startup_bundles/00.logging</outputDirectory>
+			<useProjectArtifact>false</useProjectArtifact>
+			<includes>
+				<include>org.slf4j:*</include>
+				<include>log4j:log4j</include>
+			</includes>
+		</dependencySet>
+		<dependencySet>
+			<outputDirectory>dist/startup_bundles/01.apachecommons</outputDirectory>
+			<useProjectArtifact>false</useProjectArtifact>
+			<includes>
+				<include>org.apache.commons:*</include>
+				<include>commons-*</include>
+			</includes>
 		</dependencySet>
 	</dependencySets>
 
