@@ -32,6 +32,9 @@ JAVA_OPTS+=("com.github.ddth.orestws.bootstrap.StandaloneBootstrap")
 
 RUN_CMD=("$JAVA" ${JAVA_OPTS[@]})
 
+JPDA_PORT=8888
+RUN_CMD_JPDA=("$JAVA" "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=$JPDA_PORT" ${JAVA_OPTS[@]})
+
 running()
 {
     local PID=$(cat "$1" 2>/dev/null) || return 1
@@ -47,6 +50,29 @@ usage()
 ACTION=$1
 
 case "$ACTION" in
+    jpda)
+        echo -n "Starting $_appName_ Server in debug mode: "
+        
+        if [ -f "$ORESTWS_PID" ]
+        then
+            if running $ORESTWS_PID
+            then
+                echo "Already Running!"
+                exit 1
+            else
+                # dead pid file - remove
+                rm -f "$ORESTWS_PID"
+            fi            
+        fi
+        
+        "${RUN_CMD_JPDA[@]}" &
+        disown $!
+        echo $! > "$ORESTWS_PID"
+            
+        echo "STARTED $_appName_ Server `date`" 
+
+        ;;
+    
     start)
         echo -n "Starting $_appName_ Server: "
 

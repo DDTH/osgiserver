@@ -33,6 +33,9 @@ SET OPTS_JVM=-server -Xms%JAVA_MEM_MB%m -Xmx%JAVA_MEM_MB%m -Djava.net.preferIPv4
 SET OPTS_GC_LOG=-XX:PrintFLSStatistics=1 -XX:PrintCMSStatistics=1 -XX:+PrintTenuringDistribution -XX:+PrintGCDetails -XX:+PrintGCDateStamps -verbose:gc -Xloggc:%ORESTWS_HOME%\logs\garbage.log
 SET OPTS_ORESTWS=-Dorestws.home=%ORESTWS_HOME% -Dorestws.osgi.properties=%ORESTWS_HOME%\bin\osgi-felix.properties
 SET OPTS_CLASSPATH=-classpath "%ORESTWS_HOME%\lib;%ORESTWS_HOME%\lib\*"
-java %OPTS_JVM% %OPTS_GC_LOG% %OPTS_ORESTWS% %OPTS_CLASSPATH% com.github.ddth.orestws.bootstrap.StandaloneBootstrap
+
+SET JPDA_PORT=8888
+
+java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=%JPDA_PORT% %OPTS_JVM% %OPTS_GC_LOG% %OPTS_ORESTWS% %OPTS_CLASSPATH% com.github.ddth.orestws.bootstrap.StandaloneBootstrap
 
 :end
