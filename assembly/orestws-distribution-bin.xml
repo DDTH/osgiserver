@@ -82,6 +82,13 @@
 				<include>commons-*</include>
 			</includes>
 		</dependencySet>
+		<dependencySet>
+			<outputDirectory>dist/startup_bundles/02.felix</outputDirectory>
+			<useProjectArtifact>false</useProjectArtifact>
+			<includes>
+				<include>org.apache.felix:*</include>
+			</includes>
+		</dependencySet>
 	</dependencySets>
 
 	<moduleSets>
