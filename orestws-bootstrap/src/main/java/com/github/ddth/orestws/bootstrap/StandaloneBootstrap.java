@@ -41,8 +41,6 @@ public class StandaloneBootstrap {
             InterruptedException {
         checkEnv();
         initFelixFramework();
-        // initBundleConfigDao();
-        // startAllBundles();
 
         Runtime.getRuntime().addShutdownHook(new Thread("ORESTWS Shutdown Hook") {
             public void run() {
@@ -57,7 +55,41 @@ public class StandaloneBootstrap {
             }
         });
 
+        startAllBundles();
+
         framework.waitForStop(0);
+    }
+
+    private static void startAllBundles() {
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.debug("Starting all bundles...");
+        }
+        Bundle[] bundles = framework.getBundleContext().getBundles();
+        Arrays.sort(bundles, new Comparator<Bundle>() {
+            @Override
+            public int compare(Bundle o1, Bundle o2) {
+                long result = o1.getBundleId() - o2.getBundleId();
+                return result < 0 ? -1 : (result > 0 ? 1 : 0);
+            }
+        });
+        for (Bundle bundle : bundles) {
+            try {
+                _startBundle(bundle);
+            } catch (Exception e) {
+                LOGGER.error(e.getMessage(), e);
+            }
+        }
+    }
+
+    private static void _startBundle(Bundle bundle) throws BundleException {
+        int state = bundle.getState();
+        if ((state == Bundle.RESOLVED || state == Bundle.INSTALLED)
+                && bundle.getHeaders().get(Constants.FRAGMENT_HOST) == null) {
+            bundle.start();
+            if (LOGGER.isDebugEnabled()) {
+                LOGGER.debug("Bundle [" + bundle + "] has been started.");
+            }
+        }
     }
 
     private static void checkEnv() {
@@ -192,17 +224,6 @@ public class StandaloneBootstrap {
             _startBundle(bundle);
         }
         return bundle;
-    }
-
-    private static void _startBundle(Bundle bundle) throws BundleException {
-        int state = bundle.getState();
-        if ((state == Bundle.RESOLVED || state == Bundle.INSTALLED)
-                && bundle.getHeaders().get(Constants.FRAGMENT_HOST) == null) {
-            bundle.start();
-            if (LOGGER.isDebugEnabled()) {
-                LOGGER.debug("Bundle [" + bundle + "] has been started.");
-            }
-        }
     }
 
     private static Properties _loadOsgiConfigProperties() throws IOException {
