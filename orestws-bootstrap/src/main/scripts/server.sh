@@ -32,8 +32,6 @@ JAVA_OPTS+=("com.github.ddth.orestws.bootstrap.StandaloneBootstrap")
 
 RUN_CMD=("$JAVA" ${JAVA_OPTS[@]})
 
-echo $RUN_CMD
-
 running()
 {
     local PID=$(cat "$1" 2>/dev/null) || return 1
