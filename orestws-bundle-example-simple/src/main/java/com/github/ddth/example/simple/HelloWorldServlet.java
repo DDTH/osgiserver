@@ -7,7 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class HelloWorldServlet1 extends HttpServlet {
+/**
+ * A simple servlet which handles 2 method GET & POST.
+ * 
+ * @author Thanh Nguyen <btnguyen2k@gmail.com>
+ */
+public class HelloWorldServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
