@@ -8,13 +8,13 @@
 		<version>0.1.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.github.ddth</groupId>
-	<artifactId>orestws-bundle-log4j</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<!-- <groupId>com.github.ddth</groupId> -->
+	<artifactId>orestws-bundle-example-simple</artifactId>
+	<!-- <version>0.1.0-SNAPSHOT</version> -->
 	<packaging>bundle</packaging>
 
-	<name>ORESTWS Log4j Configurations</name>
-	<description>Log4j Configurations for bundles deployed on ORESTWS</description>
+	<name>orestws-bundle-example-simple</name>
+	<description>Some ORESTWS simple examples</description>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -28,6 +28,18 @@
 			<version>4.3.0</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.osgi.compendium</artifactId>
+			<version>1.4.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -39,9 +51,8 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Fragment-Host>log4j</Fragment-Host>
+						<Bundle-Activator>com.github.ddth.example.simple.Activator</Bundle-Activator>
 						<Export-Package />
-						<Import-Package />
 					</instructions>
 				</configuration>
 			</plugin>

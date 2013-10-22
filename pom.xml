@@ -43,6 +43,7 @@
 	<modules>
 		<module>orestws-bundle-log4j</module>
 		<module>orestws-bootstrap</module>
+		<module>orestws-bundle-example-simple</module>
 		<module>orestws-distribution</module>
 	</modules>
 
