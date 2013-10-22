@@ -98,6 +98,8 @@
 				<include>org.apache.felix:org.apache.felix.scr</include>
 				<include>org.apache.felix:org.apache.felix.webconsole*</include>
 				<include>org.apache.felix:org.osgi.compendium</include>
+				<include>org.apache.felix:org.apache.felix.configadmin</include>
+				<include>org.apache.felix:org.apache.felix.log</include>
 			</includes>
 		</dependencySet>
 		<dependencySet>
