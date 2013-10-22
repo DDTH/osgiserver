@@ -48,7 +48,14 @@ running()
 
 usage()
 {
-    echo "Usage: ${0##*/} <{start|stop}> [JVM mem limit in mb]"
+    echo "Usage: ${0##*/} <{start|stop|jpda}> [JVM mem limit in mb]"
+    echo "- start: start the server normally"
+    echo "- jpda : start the server with remote debugging on port $JPDA_PORT"
+    echo "- stop : stop the server"
+    echo
+    echo "Example: start server with remote debugging and 64mb memory limit"
+    echo "  ${0##*/} jpda 64"
+    echo
     exit 1
 }
 

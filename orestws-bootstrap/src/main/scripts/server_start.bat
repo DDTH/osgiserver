@@ -2,8 +2,17 @@
 
 REM ==================================================
 REM ORESTWS start script for Windows
+REM Note: Assuming Windows is for development,
+REM       JPDA debugging is on
 REM ==================================================
 
+REM ==================================================
+REM Uncomment only one of the two lines below
+REM ==================================================
+REM SET ENV_NAME=production
+SET ENV_NAME=development
+
+SET JPDA_PORT=8888
 
 SET ORESTWS_HOME=%~dp0
 SET ORESTWS_HOME=%ORESTWS_HOME%\..
@@ -34,8 +43,6 @@ SET OPTS_GC_LOG=-XX:PrintFLSStatistics=1 -XX:PrintCMSStatistics=1 -XX:+PrintTenu
 SET OPTS_ORESTWS=-Dorestws.home=%ORESTWS_HOME% -Dorestws.osgi.properties=%ORESTWS_HOME%\bin\osgi-felix.properties
 SET OPTS_CLASSPATH=-classpath "%ORESTWS_HOME%\lib;%ORESTWS_HOME%\lib\*"
 
-SET JPDA_PORT=8888
-
-java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=%JPDA_PORT% %OPTS_JVM% %OPTS_GC_LOG% %OPTS_ORESTWS% %OPTS_CLASSPATH% com.github.ddth.orestws.bootstrap.StandaloneBootstrap
+java -Dlog4j.configuration=log4j-%ENV_NAME%.xml -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=%JPDA_PORT% %OPTS_JVM% %OPTS_GC_LOG% %OPTS_ORESTWS% %OPTS_CLASSPATH% com.github.ddth.orestws.bootstrap.StandaloneBootstrap
 
 :end
