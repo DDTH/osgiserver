@@ -1,3 +1,3 @@
-ORESTWS - OSGi RESTful WebServices
-==================================
+OSGi RESTful WebServices
+========================
 
