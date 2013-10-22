@@ -19,16 +19,22 @@
 				<include>*.properties</include>
 				<include>*.sh</include>
 				<include>*.bat</include>
+				<include>*.xml</include>
 			</includes>
 			<excludes>
-				<exclude>log4j.properties</exclude>
+				<exclude>log4j*</exclude>
 			</excludes>
 		</fileSet>
 	</fileSets>
 
 	<files>
 		<file>
-			<source>../orestws-bootstrap/src/main/scripts/log4j.properties</source>
+			<source>../orestws-bootstrap/src/main/scripts/log4j-development.xml</source>
+			<outputDirectory>dist/lib</outputDirectory>
+			<filtered>true</filtered>
+		</file>
+		<file>
+			<source>../orestws-bootstrap/src/main/scripts/log4j-production.xml</source>
 			<outputDirectory>dist/lib</outputDirectory>
 			<filtered>true</filtered>
 		</file>
@@ -109,7 +115,7 @@
 
 	<moduleSets>
 		<moduleSet>
-			<!-- Enable access to all projects in the current multimodule build! -->
+			<!-- Enable access to all projects in the current multi-module build! -->
 			<useAllReactorProjects>true</useAllReactorProjects>
 
 			<!-- Now, select which projects to include in this module-set. -->
@@ -118,6 +124,16 @@
 			</includes>
 			<binaries>
 				<outputDirectory>dist/lib</outputDirectory>
+				<unpack>false</unpack>
+			</binaries>
+		</moduleSet>
+		<moduleSet>
+			<useAllReactorProjects>true</useAllReactorProjects>
+			<includes>
+				<include>com.github.ddth:orestws-bundle-log4j</include>
+			</includes>
+			<binaries>
+				<outputDirectory>dist/startup_bundles/00.logging</outputDirectory>
 				<unpack>false</unpack>
 			</binaries>
 		</moduleSet>
