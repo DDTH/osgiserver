@@ -94,6 +94,8 @@
 			<useProjectArtifact>false</useProjectArtifact>
 			<includes>
 				<include>org.apache.felix:org.apache.felix.shell*</include>
+				<include>org.apache.felix:org.apache.felix.http*</include>
+				<include>org.apache.felix:org.osgi.compendium</include>
 			</includes>
 		</dependencySet>
 		<dependencySet>
