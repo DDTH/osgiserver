@@ -8,10 +8,12 @@ By Thanh Ba Nguyen (btnguyen2k (at) gmail.com)
 Project home:
 [https://github.com/DDTH/orestws](https://github.com/DDTH/orestws)
 
+//TODO
+
 
 ## License ##
 
-See LICENSE.txt for details. Copyright (c) 2012 Thanh Ba Nguyen (aka btnguyen2k).
+See LICENSE.txt for details. Copyright (c) 2013 Thanh Ba Nguyen.
 
 Third party libraries are distributed under their own license(s).
 
@@ -27,9 +29,9 @@ See [RELEASE-NOTES.md](RELEASE-NOTES.md).
 
 ## Installation ##
 
-- Clone github project
-- run `mvn clean package`
-- The package is available at `orest-distribution/orestws-distribution-<version>-bin/dist`. You may copy it to your favourite location, e.g. `C:\ORESTWS`
+- Clone github project.
+- Build th package with maven: `mvn clean package`.
+- The package is available at `orest-distribution/orestws-distribution-<version>-bin/dist`. You may copy it to your favourite location, e.g. `C:\ORESTWS`.
 
 Under directory `orest-distribution/orestws-distribution-<version>-bin/dist` there are several files and directories:
 
@@ -69,3 +71,5 @@ Stop the running server
 > `/usr/local/ORESTWS/bin/server.sh stop`
 
 Upon successful startup, ORESTWS server listens for HTTP requests on port 8080 and remote debuging connections on port 8888 (both ports are configurable).
+
+The Admin Console can be accessed via [http://localhost:8080/system/console](http://localhost:8080/system/console) (login with default account `root/password`).
