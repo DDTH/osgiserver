@@ -44,6 +44,11 @@
 			<filtered>true</filtered>
 		</file>
 		<file>
+			<source>../RELEASE-NOTES.md</source>
+			<outputDirectory>dist</outputDirectory>
+			<filtered>true</filtered>
+		</file>
+		<file>
 			<source>../LICENSE.txt</source>
 			<outputDirectory>dist</outputDirectory>
 		</file>
