@@ -19,7 +19,7 @@ public class Activator implements BundleActivator {
 
     private ServiceTracker httpTracker;
     private Logger LOGGER = LoggerFactory.getLogger(Activator.class);
-    private ServiceRegistration<?> serviceHello, serviceHelloJson;
+    private ServiceRegistration serviceHello, serviceHelloJson;
 
     @Override
     public void start(BundleContext context) throws Exception {
