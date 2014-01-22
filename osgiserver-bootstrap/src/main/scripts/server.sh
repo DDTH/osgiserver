@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # ==================================================
-# ORESTWS start/stop script for *NIX
+# OSGiServer start/stop script for *NIX
 # ==================================================
 
 # Uncomment only one of the two lines below
@@ -15,8 +15,8 @@ _basedir=$(pwd -L)
 popd > /dev/null
 
 # Or you can hardcode the directory as you wish
-ORESTWS_HOME=$_basedir/..
-ORESTWS_PID="$ORESTWS_HOME/orestws.pid"
+OSGiSERVER_HOME=$_basedir/..
+OSGiSERVER_PID="$OSGiSERVER_HOME/osgiserver.pid"
 
 JAVA_MEM_MB=$2
 if [ "$JAVA_MEM_MB" = "" ]
@@ -24,16 +24,16 @@ then
     JAVA_MEM_MB=64
 fi
 
-_appName_=ORESTWS
+_appName_=OSGiSERVER
 
 JAVA=$(which java)
 JAVA_OPTS="-server -Xms${JAVA_MEM_MB}m -Xmx${JAVA_MEM_MB}m -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true -XX:+UseParNewGC -XX:+UseConcMarkSweepGC"
-JAVA_OPTS+=("-XX:PrintFLSStatistics=1 -XX:PrintCMSStatistics=1 -XX:+PrintTenuringDistribution -XX:+PrintGCDetails -XX:+PrintGCDateStamps -verbose:gc -Xloggc:$ORESTWS_HOME/logs/garbage.log")
+JAVA_OPTS+=("-XX:PrintFLSStatistics=1 -XX:PrintCMSStatistics=1 -XX:+PrintTenuringDistribution -XX:+PrintGCDetails -XX:+PrintGCDateStamps -verbose:gc -Xloggc:$OSGiSERVER_HOME/logs/garbage.log")
 JAVA_OPTS+=("-Dlog4j.configuration=log4j-$ENV_NAME.xml")
-JAVA_OPTS+=("-Dorestws.home=$ORESTWS_HOME")
-JAVA_OPTS+=("-Dorestws.osgi.properties=$ORESTWS_HOME/bin/osgi-felix.properties")
-JAVA_OPTS+=("-classpath $ORESTWS_HOME/lib:$ORESTWS_HOME/lib/*")
-JAVA_OPTS+=("com.github.ddth.orestws.bootstrap.StandaloneBootstrap")
+JAVA_OPTS+=("-Dosgiserver.home=$OSGiSERVER_HOME")
+JAVA_OPTS+=("-Dosgiserver.osgi.properties=$OSGiSERVER_HOME/bin/osgi-felix.properties")
+JAVA_OPTS+=("-classpath $OSGiSERVER_HOME/lib:$OSGiSERVER_HOME/lib/*")
+JAVA_OPTS+=("com.github.ddth.osgiserver.bootstrap.StandaloneBootstrap")
 
 RUN_CMD=("$JAVA" ${JAVA_OPTS[@]})
 
@@ -65,21 +65,21 @@ case "$ACTION" in
     jpda)
         echo -n "Starting $_appName_ Server in debug mode: "
         
-        if [ -f "$ORESTWS_PID" ]
+        if [ -f "$OSGiSERVER_PID" ]
         then
-            if running $ORESTWS_PID
+            if running $OSGiSERVER_PID
             then
                 echo "Already Running!"
                 exit 1
             else
                 # dead pid file - remove
-                rm -f "$ORESTWS_PID"
+                rm -f "$OSGiSERVER_PID"
             fi            
         fi
         
         "${RUN_CMD_JPDA[@]}" &
         disown $!
-        echo $! > "$ORESTWS_PID"
+        echo $! > "$OSGiSERVER_PID"
             
         echo "STARTED $_appName_ Server `date`" 
 
@@ -88,21 +88,21 @@ case "$ACTION" in
     start)
         echo -n "Starting $_appName_ Server: "
 
-        if [ -f "$ORESTWS_PID" ]
+        if [ -f "$OSGiSERVER_PID" ]
         then
-            if running $ORESTWS_PID
+            if running $OSGiSERVER_PID
             then
                 echo "Already Running!"
                 exit 1
             else
                 # dead pid file - remove
-                rm -f "$ORESTWS_PID"
+                rm -f "$OSGiSERVER_PID"
             fi            
         fi
         
         "${RUN_CMD[@]}" &
         disown $!
-        echo $! > "$ORESTWS_PID"
+        echo $! > "$OSGiSERVER_PID"
             
         echo "STARTED $_appName_ Server `date`" 
         
@@ -111,18 +111,18 @@ case "$ACTION" in
     stop)
         echo -n "Stopping $_appName_: "
 
-        PID=$(cat "$ORESTWS_PID" 2>/dev/null)
+        PID=$(cat "$OSGiSERVER_PID" 2>/dev/null)
         kill "$PID" 2>/dev/null
 
         TIMEOUT=30
-        while running $ORESTWS_PID; do
+        while running $OSGiSERVER_PID; do
             if (( TIMEOUT-- == 0 )); then
                 kill -KILL "$PID" 2>/dev/null
             fi
             sleep 1
         done
 
-        rm -f "$ORESTWS_PID"
+        rm -f "$OSGiSERVER_PID"
         echo OK
         
         ;;

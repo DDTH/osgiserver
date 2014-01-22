@@ -1,4 +1,4 @@
-package com.github.ddth.orestws.bootstrap;
+package com.github.ddth.osgiserver.bootstrap;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -34,15 +34,15 @@ public class StandaloneBootstrap {
     private static Logger LOGGER = LoggerFactory.getLogger(StandaloneBootstrap.class);
 
     private static Framework framework;
-    private static File ORESTWS_HOME;
-    private static File ORESTWS_OSGI_PROPERTIES;
+    private static File OSGiSERVER_HOME;
+    private static File OSGiSERVER_OSGI_PROPERTIES;
 
     public static void main(String[] args) throws IOException, BundleException,
             InterruptedException {
         checkEnv();
         initFelixFramework();
 
-        Runtime.getRuntime().addShutdownHook(new Thread("ORESTWS Shutdown Hook") {
+        Runtime.getRuntime().addShutdownHook(new Thread("OSGiSERVER Shutdown Hook") {
             public void run() {
                 try {
                     if (framework != null) {
@@ -93,27 +93,27 @@ public class StandaloneBootstrap {
     }
 
     private static void checkEnv() {
-        final String PROP_ORESTWS_HOME = "orestws.home";
-        String orestwsHome = System.getProperty(PROP_ORESTWS_HOME);
-        if (StringUtils.isBlank(orestwsHome)) {
-            throw new IllegalArgumentException("[" + PROP_ORESTWS_HOME
-                    + "] is not defined. Please define it with -D" + PROP_ORESTWS_HOME);
+        final String PROP_OSGiSERVER_HOME = "osgiserver.home";
+        String osgiserverHome = System.getProperty(PROP_OSGiSERVER_HOME);
+        if (StringUtils.isBlank(osgiserverHome)) {
+            throw new IllegalArgumentException("[" + PROP_OSGiSERVER_HOME
+                    + "] is not defined. Please define it with -D" + PROP_OSGiSERVER_HOME);
         }
-        ORESTWS_HOME = new File(orestwsHome);
-        if (!ORESTWS_HOME.isDirectory()) {
-            throw new IllegalArgumentException("[" + ORESTWS_HOME.getAbsolutePath()
+        OSGiSERVER_HOME = new File(osgiserverHome);
+        if (!OSGiSERVER_HOME.isDirectory()) {
+            throw new IllegalArgumentException("[" + OSGiSERVER_HOME.getAbsolutePath()
                     + "] is not a directory");
         }
 
-        final String PROP_ORESTWS_OSGI_PROPERTIES = "orestws.osgi.properties";
-        String orestwsOsgiProperties = System.getProperty(PROP_ORESTWS_OSGI_PROPERTIES);
-        if (StringUtils.isBlank(orestwsOsgiProperties)) {
-            throw new IllegalArgumentException("[" + PROP_ORESTWS_OSGI_PROPERTIES
-                    + "] is not defined. Please define it with -D" + PROP_ORESTWS_OSGI_PROPERTIES);
+        final String PROP_OSGiSERVER_OSGI_PROPERTIES = "osgiserver.osgi.properties";
+        String osgiserverOsgiProperties = System.getProperty(PROP_OSGiSERVER_OSGI_PROPERTIES);
+        if (StringUtils.isBlank(osgiserverOsgiProperties)) {
+            throw new IllegalArgumentException("[" + PROP_OSGiSERVER_OSGI_PROPERTIES
+                    + "] is not defined. Please define it with -D" + PROP_OSGiSERVER_OSGI_PROPERTIES);
         }
-        ORESTWS_OSGI_PROPERTIES = new File(orestwsOsgiProperties);
-        if (!ORESTWS_OSGI_PROPERTIES.isFile() || !ORESTWS_OSGI_PROPERTIES.canRead()) {
-            throw new IllegalArgumentException("[" + ORESTWS_OSGI_PROPERTIES.getAbsolutePath()
+        OSGiSERVER_OSGI_PROPERTIES = new File(osgiserverOsgiProperties);
+        if (!OSGiSERVER_OSGI_PROPERTIES.isFile() || !OSGiSERVER_OSGI_PROPERTIES.canRead()) {
+            throw new IllegalArgumentException("[" + OSGiSERVER_OSGI_PROPERTIES.getAbsolutePath()
                     + "] is not a file or not readable");
         }
     }
@@ -126,9 +126,9 @@ public class StandaloneBootstrap {
         if (sAutoDeployDir == null) {
             throw new RuntimeException("Can not find configuration ["
                     + AutoProcessor.AUTO_DEPLOY_DIR_PROPERY + "] in file "
-                    + ORESTWS_OSGI_PROPERTIES.getAbsolutePath());
+                    + OSGiSERVER_OSGI_PROPERTIES.getAbsolutePath());
         }
-        File fAutoDeployDir = new File(ORESTWS_HOME, sAutoDeployDir);
+        File fAutoDeployDir = new File(OSGiSERVER_HOME, sAutoDeployDir);
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug(AutoProcessor.AUTO_DEPLOY_DIR_PROPERY + ": "
                     + fAutoDeployDir.getAbsolutePath());
@@ -140,18 +140,18 @@ public class StandaloneBootstrap {
         String sCacheDir = configProps.getProperty(Constants.FRAMEWORK_STORAGE);
         if (sCacheDir == null) {
             throw new RuntimeException("Can not find configuration [" + Constants.FRAMEWORK_STORAGE
-                    + "] in file " + ORESTWS_OSGI_PROPERTIES.getAbsolutePath());
+                    + "] in file " + OSGiSERVER_OSGI_PROPERTIES.getAbsolutePath());
         } else if (LOGGER.isDebugEnabled()) {
             LOGGER.debug(Constants.FRAMEWORK_STORAGE + ": " + sCacheDir);
         }
-        File fCacheDir = new File(ORESTWS_HOME, sCacheDir);
+        File fCacheDir = new File(OSGiSERVER_HOME, sCacheDir);
         configProps.setProperty(Constants.FRAMEWORK_STORAGE, fCacheDir.getAbsolutePath());
 
         // configure Felix's File Install watch directory
         final String PROP_FELIX_FILE_INSTALL_DIR = "felix.fileinstall.dir";
         String sMonitorDir = configProps.getProperty(PROP_FELIX_FILE_INSTALL_DIR);
         if (sMonitorDir != null) {
-            File fMonitorDir = new File(ORESTWS_HOME, sMonitorDir);
+            File fMonitorDir = new File(OSGiSERVER_HOME, sMonitorDir);
             configProps.setProperty(PROP_FELIX_FILE_INSTALL_DIR, fMonitorDir.getAbsolutePath());
             if (LOGGER.isDebugEnabled()) {
                 LOGGER.debug(PROP_FELIX_FILE_INSTALL_DIR + ": " + fMonitorDir.getAbsolutePath());
@@ -230,7 +230,7 @@ public class StandaloneBootstrap {
         Properties configProps = new Properties();
         FileInputStream fis = null;
         try {
-            fis = new FileInputStream(ORESTWS_OSGI_PROPERTIES);
+            fis = new FileInputStream(OSGiSERVER_OSGI_PROPERTIES);
             configProps.load(fis);
         } finally {
             IOUtils.closeQuietly(fis);
