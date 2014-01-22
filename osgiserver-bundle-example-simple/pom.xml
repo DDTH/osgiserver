@@ -9,16 +9,18 @@
 	</parent>
 
 	<!-- <groupId>com.github.ddth</groupId> -->
-	<artifactId>orestws-bundle-example-simple</artifactId>
+	<artifactId>osgiserver-bundle-example-simple</artifactId>
 	<!-- <version>0.1.0-SNAPSHOT</version> -->
 	<packaging>bundle</packaging>
 
-	<name>orestws-bundle-example-simple</name>
-	<description>Some ORESTWS simple examples</description>
+	<name>osgiserver-bundle-example-simple</name>
+	<description>Some OSGiSERVER simple examples</description>
 	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<version.felix>4.2.1</version.felix>
+        <version.java>1.7</version.java>
 	</properties>
 
 	<dependencies>
@@ -47,7 +49,7 @@
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
-				<version>2.3.7</version>
+				<version>2.4.0</version>
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
@@ -66,7 +68,7 @@
 				<dependency>
 					<groupId>org.apache.felix</groupId>
 					<artifactId>org.apache.felix.main</artifactId>
-					<version>4.0.3</version>
+					<version>${version.felix}</version>
 					<scope>provided</scope>
 				</dependency>
 				<!-- To include a shell: <dependency> <groupId>org.apache.felix</groupId> 
@@ -119,7 +121,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-assembly-plugin</artifactId>
-						<version>2.3</version>
+						<version>2.4</version>
 						<executions>
 							<execution>
 								<id>create-executable-jar</id>
@@ -145,7 +147,7 @@
 				<dependency>
 					<groupId>org.apache.felix</groupId>
 					<artifactId>org.apache.felix.main</artifactId>
-					<version>4.0.3</version>
+					<version>${version.felix}</version>
 					<scope>provided</scope>
 				</dependency>
 				<!-- org.apache.felix:org.apache.felix.gogo.shell:0.6.1 useless from 

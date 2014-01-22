@@ -10,35 +10,31 @@
 		<version>0.1.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.github.ddth</groupId>
-	<artifactId>orestws-distribution</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<!-- <groupId>com.github.ddth</groupId> -->
+	<artifactId>osgiserver-distribution</artifactId>
+	<!-- <version>0.1.0-SNAPSHOT</version> -->
 	<packaging>pom</packaging>
 
-	<name>>orestws-distribution</name>
-	<description>ORESTWS distribution module</description>
+	<name>>osgiserver-distribution</name>
+	<description>OSGiSERVER distribution module</description>
 	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<version.slf4j>1.7.5</version.slf4j>
 	</properties>
 
 	<dependencies>
-		<!-- <dependency> <groupId>com.github.ddth</groupId> <artifactId>orestws-bundle-log4j</artifactId> 
-			<version>0.1.0-SNAPSHOT</version> </dependency> <dependency> <groupId>com.github.ddth</groupId> 
-			<artifactId>orestws-bootstrap</artifactId> <version>0.1.0-SNAPSHOT</version> 
-			</dependency> -->
-
 		<!-- dist/startup_bundles/00.logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.5</version>
+			<version>${version.slf4j}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.5</version>
+			<version>${version.slf4j}</version>
 		</dependency>
 
 		<!-- dist/startup_bundles/01.apachecommons -->
@@ -208,7 +204,7 @@
 						</goals>
 						<configuration>
 							<descriptors>
-								<descriptor>assembly/orestws-distribution-bin.xml</descriptor>
+								<descriptor>assembly/osgiserver-distribution-bin.xml</descriptor>
 							</descriptors>
 						</configuration>
 					</execution>

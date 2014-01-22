@@ -13,7 +13,7 @@
 
 	<fileSets>
 		<fileSet>
-			<directory>../orestws-bootstrap/src/main/scripts</directory>
+			<directory>../osgiserver-bootstrap/src/main/scripts</directory>
 			<outputDirectory>dist/bin</outputDirectory>
 			<includes>
 				<include>*.properties</include>
@@ -29,12 +29,12 @@
 
 	<files>
 		<file>
-			<source>../orestws-bootstrap/src/main/scripts/log4j-development.xml</source>
+			<source>../osgiserver-bootstrap/src/main/scripts/log4j-development.xml</source>
 			<outputDirectory>dist/lib</outputDirectory>
 			<filtered>true</filtered>
 		</file>
 		<file>
-			<source>../orestws-bootstrap/src/main/scripts/log4j-production.xml</source>
+			<source>../osgiserver-bootstrap/src/main/scripts/log4j-production.xml</source>
 			<outputDirectory>dist/lib</outputDirectory>
 			<filtered>true</filtered>
 		</file>
@@ -132,7 +132,7 @@
 
 			<!-- Now, select which projects to include in this module-set. -->
 			<includes>
-				<include>com.github.ddth:orestws-bootstrap</include>
+				<include>com.github.ddth:osgiserver-bootstrap</include>
 			</includes>
 			<binaries>
 				<outputDirectory>dist/lib</outputDirectory>
@@ -142,7 +142,7 @@
 		<moduleSet>
 			<useAllReactorProjects>true</useAllReactorProjects>
 			<includes>
-				<include>com.github.ddth:orestws-bundle-log4j</include>
+				<include>com.github.ddth:osgiserver-bundle-log4j</include>
 			</includes>
 			<binaries>
 				<outputDirectory>dist/startup_bundles/00.logging</outputDirectory>

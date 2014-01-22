@@ -44,8 +44,8 @@
 	<modules>
 		<module>osgiserver-bundle-log4j</module>
 		<module>osgiserver-bootstrap</module>
-		<module>orestws-bundle-example-simple</module>
-		<module>orestws-distribution</module>
+		<module>osgiserver-bundle-example-simple</module>
+		<module>osgiserver-distribution</module>
 	</modules>
 
 	<dependencies>
@@ -65,7 +65,7 @@
 					<version>2.4</version>
 					<configuration>
 						<descriptors>
-							<descriptor>assembly/orestws-distribution-bin.xml</descriptor>
+							<descriptor>assembly/osgiserver-distribution-bin.xml</descriptor>
 						</descriptors>
 					</configuration>
 				</plugin>
