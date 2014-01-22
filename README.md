@@ -22,7 +22,7 @@ Third party libraries are distributed under their own license(s).
 
 Latest stable release: N/A.
 
-Latest SNAPSHOT release: v0.1.1-SNAPSHOT.
+Latest SNAPSHOT release: v0.1.0-SNAPSHOT.
 
 See [RELEASE-NOTES.md](RELEASE-NOTES.md).
 

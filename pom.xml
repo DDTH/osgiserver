@@ -38,11 +38,12 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<version.java>1.7</version.java>
 	</properties>
 
 	<modules>
 		<module>orestws-bundle-log4j</module>
-		<module>orestws-bootstrap</module>
+		<module>osgiserver-bootstrap</module>
 		<module>orestws-bundle-example-simple</module>
 		<module>orestws-distribution</module>
 	</modules>
@@ -71,10 +72,10 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>2.3.2</version>
+					<version>3.1</version>
 					<configuration>
-						<source>1.6</source>
-						<target>1.6</target>
+						<source>${version.java}</source>
+						<target>${version.java}</target>
 					</configuration>
 				</plugin>
 			</plugins>

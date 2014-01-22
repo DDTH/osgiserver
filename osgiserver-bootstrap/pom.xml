@@ -11,16 +11,18 @@
 	</parent>
 
 	<!-- <groupId>com.github.ddth</groupId> -->
-	<artifactId>orestws-bootstrap</artifactId>
+	<artifactId>osgiserver-bootstrap</artifactId>
 	<!-- <version>0.1.0-SNAPSHOT</version> -->
 	<packaging>jar</packaging>
 
-	<name>orestws-bootstrap</name>
-	<description>Bootstrapper for ORESTWS</description>
+	<name>osgiserver-bootstrap</name>
+	<description>Bootstrapper for OSGiServer</description>
 	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<version.felix>4.2.1</version.felix>
+		<version.java>1.7</version.java>
 	</properties>
 
 	<dependencies>
@@ -28,12 +30,12 @@
 		<dependency>
 			<groupId>org.apache.felix</groupId>
 			<artifactId>org.apache.felix.framework</artifactId>
-			<version>4.2.1</version>
+			<version>${version.felix}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.felix</groupId>
 			<artifactId>org.apache.felix.main</artifactId>
-			<version>4.2.1</version>
+			<version>${version.felix}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -56,13 +58,13 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>2.3.2</version>
-					<configuration>
-						<source>1.6</source>
-						<target>1.6</target>
-					</configuration>
+				    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.1</version>
+                    <configuration>
+                        <source>${version.java}</source>
+                        <target>${version.java}</target>
+                    </configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
