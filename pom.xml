@@ -42,7 +42,7 @@
 	</properties>
 
 	<modules>
-		<module>orestws-bundle-log4j</module>
+		<module>osgiserver-bundle-log4j</module>
 		<module>osgiserver-bootstrap</module>
 		<module>orestws-bundle-example-simple</module>
 		<module>orestws-distribution</module>
