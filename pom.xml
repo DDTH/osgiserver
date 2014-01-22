@@ -4,25 +4,25 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.github.ddth</groupId>
-	<artifactId>orestws</artifactId>
+	<artifactId>osgiserver</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>orestws</name>
-	<description>OSGi-based RESTful WebService</description>
+	<name>osgiserver</name>
+	<description>OSGi Server With Start/Stop Scripts</description>
 	<url>http://maven.apache.org</url>
 
 	<licenses>
 		<license>
-			<name>GNU Lesser General Public License, Version 3.0</name>
-			<url>http://www.gnu.org/licenses/lgpl.html</url>
+			<name>MIT License</name>
+			<url>http://opensource.org/licenses/MIT</url>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
 	<scm>
-		<url>git@github.com:DDTH/orestws.git</url>
-		<connection>scm:git:git@github.com:DDTH/orestws.git</connection>
-		<developerConnection>scm:git:git@github.com:DDTH/orestws.git</developerConnection>
+		<url>git@github.com:DDTH/osgiserver.git</url>
+		<connection>scm:git:git@github.com:DDTH/osgiserver.git</connection>
+		<developerConnection>scm:git:git@github.com:DDTH/osgiserver.git</developerConnection>
 	</scm>
 	<organization>
 		<name>DDTH</name>

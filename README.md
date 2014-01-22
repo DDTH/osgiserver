@@ -1,12 +1,12 @@
-OSGi RESTful WebServices
-========================
+OSGi Server
+===========
 
-Writting RESTful web services is as simple as writting servlets.
+OSGi Server With Start/Stop Scripts.
 
 By Thanh Ba Nguyen (btnguyen2k (at) gmail.com)
 
 Project home:
-[https://github.com/DDTH/orestws](https://github.com/DDTH/orestws)
+[https://github.com/DDTH/osgiserver](https://github.com/DDTH/osgiserver)
 
 //TODO
 
@@ -30,10 +30,10 @@ See [RELEASE-NOTES.md](RELEASE-NOTES.md).
 ## Installation ##
 
 - Clone github project.
-- Build th package with maven: `mvn clean package`.
-- The package is available at `orest-distribution/orestws-distribution-<version>-bin/dist`. You may copy it to your favourite location, e.g. `C:\ORESTWS`.
+- Build with maven: `mvn clean package`.
+- The package is available at `osgiserver-distribution/osgiserver-distribution-<version>-bin/dist`. You may copy it to your favourite location, e.g. `C:\OSGiServer`.
 
-Under directory `orest-distribution/orestws-distribution-<version>-bin/dist` there are several files and directories:
+Under directory `osgiserver-distribution/osgiserver-distribution-<version>-bin/dist` there are several files and directories:
 
 - `README.md`: this file.
 - [`RELEASE-NOTES.md`](RELEASE-NOTES.md): release notes.
@@ -46,15 +46,15 @@ Under directory `orest-distribution/orestws-distribution-<version>-bin/dist` the
 - `var`: used internally by Apache Felix.
 
 
-## Start/Stop OREST Server ##
+## Start/Stop OSGi Server ##
 
 ### Windows ###
 
 Start server with default JVM memory limit (64mb)
-> `C:\ORESTWS\>bin\server_start.bat`
+> `C:\OSGiServer\>bin\server_start.bat`
 
 Start server with 1G memory limit
-> `C:\ORESTWS\>bin\server_start.bat 1024`
+> `C:\OSGiServer\>bin\server_start.bat 1024`
 
 Press `Ctrl-C` to stop the running server.
 
@@ -62,14 +62,14 @@ Press `Ctrl-C` to stop the running server.
 ### Linux ###
 
 Start server with default JVM memory limit (64mb)
-> `/usr/local/ORESTWS/bin/server.sh start`
+> `/usr/local/osgiserver/bin/server.sh start`
 
 Start server with remote debugging and 2G memory limit
-> `/usr/local/ORESTWS/bin/server.sh jpda 2048`
+> `/usr/local/osgiserver/bin/server.sh jpda 2048`
 
 Stop the running server
-> `/usr/local/ORESTWS/bin/server.sh stop`
+> `/usr/local/osgiserver/bin/server.sh stop`
 
-Upon successful startup, ORESTWS server listens for HTTP requests on port 8080 and remote debuging connections on port 8888 (both ports are configurable).
+Upon successful startup, OSGi server listens for HTTP requests on port 8080 and remote debuging connections on port 8888 (both ports are configurable).
 
 The Admin Console can be accessed via [http://localhost:8080/system/console](http://localhost:8080/system/console) (login with default account `root/password`).
