@@ -22,7 +22,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<version.felix>4.2.1</version.felix>
-		<version.java>1.7</version.java>
 	</properties>
 
 	<dependencies>
@@ -54,19 +53,6 @@
 		</dependency>
 	</dependencies>
 
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-				    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.1</version>
-                    <configuration>
-                        <source>${version.java}</source>
-                        <target>${version.java}</target>
-                    </configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
+	<!-- <build> section inherits from parent -->
+	<!-- <build></build> -->
 </project>

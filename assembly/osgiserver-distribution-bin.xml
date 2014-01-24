@@ -78,6 +78,7 @@
 				<include>org.apache.commons:commons-lang3</include>
 			</includes>
 		</dependencySet>
+		<!-- 
 		<dependencySet>
 			<outputDirectory>dist/startup_bundles/00.logging</outputDirectory>
 			<useProjectArtifact>false</useProjectArtifact>
@@ -86,6 +87,7 @@
 				<include>log4j:log4j</include>
 			</includes>
 		</dependencySet>
+		-->
 		<dependencySet>
 			<outputDirectory>dist/startup_bundles/01.apachecommons</outputDirectory>
 			<useProjectArtifact>false</useProjectArtifact>

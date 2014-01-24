@@ -29,6 +29,8 @@ See [RELEASE-NOTES.md](RELEASE-NOTES.md).
 
 ## Installation ##
 
+Note: Java 6 is required!
+
 - Clone github project.
 - Build with maven: `mvn clean package`.
 - The package is available at `osgiserver-distribution/osgiserver-distribution-<version>-bin/dist`. You may copy it to your favourite location, e.g. `C:\OSGiServer`.
