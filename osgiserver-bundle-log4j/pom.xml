@@ -13,8 +13,8 @@
 	<!-- <version>0.1.0-SNAPSHOT</version> -->
 	<packaging>bundle</packaging>
 
-	<name>ORESTWS Log4j Configurations</name>
-	<description>Log4j Configurations for bundles deployed on ORESTWS</description>
+	<name>OSGiServer Log4j Configurations</name>
+	<description>Log4j Configurations for bundles deployed on OSGiServer</description>
 	<url>http://maven.apache.org</url>
 
 	<properties>
