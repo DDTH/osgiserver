@@ -19,6 +19,7 @@
 		</layout>
 	</appender>
 
+    <!--
 	<logger name="com">
 		<level value="debug" />
 		<appender-ref ref="console_osgiserver" />
@@ -34,8 +35,12 @@
 		<appender-ref ref="console_osgiserver" />
 		<appender-ref ref="file_osgiserver" />
 	</logger>
+	-->
 
 	<root>
 		<level value="debug" />
+		<appender-ref ref="console_osgiserver" />
+		<appender-ref ref="file_osgiserver" />
 	</root>
+
 </log4j:configuration>

@@ -10,7 +10,7 @@
 
 	<name>osgiserver</name>
 	<description>OSGi Server With Start/Stop Scripts</description>
-	<url>http://maven.apache.org</url>
+	<url>https://github.com/DDTH/osgiserver</url>
 
 	<licenses>
 		<license>
@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.5</version>
+			<version>[1.7.5,2.0.0)</version>
 		</dependency>
 	</dependencies>
 

@@ -19,9 +19,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<version.felix>4.2.1</version.felix>
-		<version.osgi>4.3.0</version.osgi>
-		<version.servlet>3.1.0</version.servlet>
+		<version.felix>[4.2.1,5.0.0)</version.felix>
+		<version.osgi>[4.3.0,5.0.0)</version.osgi>
+		<version.servlet>[2.5.0,3.0.0)</version.servlet>
 	</properties>
 
 	<dependencies>
@@ -39,7 +39,7 @@
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
+			<artifactId>servlet-api</artifactId>
 			<version>${version.servlet}</version>
 			<scope>provided</scope>
 		</dependency>
