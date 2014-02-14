@@ -43,6 +43,6 @@ SET OPTS_GC_LOG=-XX:PrintFLSStatistics=1 -XX:PrintCMSStatistics=1 -XX:+PrintTenu
 SET OPTS_OSGiSERVER=-Dosgiserver.home=%OSGiSERVER_HOME% -Dosgiserver.osgi.properties=%OSGiSERVER_HOME%\bin\osgi-felix.properties
 SET OPTS_CLASSPATH=-classpath "%OSGiSERVER_HOME%\lib;%OSGiSERVER_HOME%\lib\*"
 
-java -Dlog4j.configuration=log4j-%ENV_NAME%.xml -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=%JPDA_PORT% %OPTS_JVM% %OPTS_GC_LOG% %OPTS_OSGiSERVER% %OPTS_CLASSPATH% com.github.ddth.osgiserver.bootstrap.StandaloneBootstrap
+java -Dspring.profiles.active=%ENV_NAME% -Dlog4j.configuration=log4j-%ENV_NAME%.xml -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=%JPDA_PORT% %OPTS_JVM% %OPTS_GC_LOG% %OPTS_OSGiSERVER% %OPTS_CLASSPATH% com.github.ddth.osgiserver.bootstrap.StandaloneBootstrap
 
 :end

@@ -29,6 +29,7 @@ _appName_=OSGiSERVER
 JAVA=$(which java)
 JAVA_OPTS="-server -Xms${JAVA_MEM_MB}m -Xmx${JAVA_MEM_MB}m -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true -XX:+UseParNewGC -XX:+UseConcMarkSweepGC"
 JAVA_OPTS+=("-XX:PrintFLSStatistics=1 -XX:PrintCMSStatistics=1 -XX:+PrintTenuringDistribution -XX:+PrintGCDetails -XX:+PrintGCDateStamps -verbose:gc -Xloggc:$OSGiSERVER_HOME/logs/garbage.log")
+JAVA_OPTS+=("-Dspring.profiles.active=$ENV_NAME)
 JAVA_OPTS+=("-Dlog4j.configuration=log4j-$ENV_NAME.xml")
 JAVA_OPTS+=("-Dosgiserver.home=$OSGiSERVER_HOME")
 JAVA_OPTS+=("-Dosgiserver.osgi.properties=$OSGiSERVER_HOME/bin/osgi-felix.properties")
