@@ -5,17 +5,15 @@
 	<parent>
 		<artifactId>osgiserver</artifactId>
 		<groupId>com.github.ddth</groupId>
-		<version>0.1.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 
-	<!-- <groupId>com.github.ddth</groupId> -->
 	<artifactId>osgiserver-bundle-example-simple</artifactId>
-	<!-- <version>0.1.0-SNAPSHOT</version> -->
 	<packaging>bundle</packaging>
 
 	<name>osgiserver-bundle-example-simple</name>
 	<description>Some OSGiSERVER simple examples</description>
-	<url>http://maven.apache.org</url>
+	<url>https://github.com/DDTH/osgiserver</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

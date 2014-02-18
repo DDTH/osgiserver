@@ -7,17 +7,15 @@
 	<parent>
 		<groupId>com.github.ddth</groupId>
 		<artifactId>osgiserver</artifactId>
-		<version>0.1.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 
-	<!-- <groupId>com.github.ddth</groupId> -->
 	<artifactId>osgiserver-distribution</artifactId>
-	<!-- <version>0.1.0-SNAPSHOT</version> -->
 	<packaging>pom</packaging>
 
 	<name>>osgiserver-distribution</name>
 	<description>OSGiSERVER distribution module</description>
-	<url>http://maven.apache.org</url>
+	<url>https://github.com/DDTH/osgiserver</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

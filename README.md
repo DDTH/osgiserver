@@ -3,8 +3,6 @@ OSGi Server
 
 OSGi Server With Start/Stop Scripts.
 
-By Thanh Ba Nguyen (btnguyen2k (at) gmail.com)
-
 Project home:
 [https://github.com/DDTH/osgiserver](https://github.com/DDTH/osgiserver)
 

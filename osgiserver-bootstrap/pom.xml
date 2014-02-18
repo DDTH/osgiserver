@@ -7,17 +7,15 @@
 	<parent>
 		<groupId>com.github.ddth</groupId>
 		<artifactId>osgiserver</artifactId>
-		<version>0.1.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 
-	<!-- <groupId>com.github.ddth</groupId> -->
 	<artifactId>osgiserver-bootstrap</artifactId>
-	<!-- <version>0.1.0-SNAPSHOT</version> -->
 	<packaging>jar</packaging>
 
 	<name>osgiserver-bootstrap</name>
 	<description>Bootstrapper for OSGiServer</description>
-	<url>http://maven.apache.org</url>
+	<url>https://github.com/DDTH/osgiserver</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
