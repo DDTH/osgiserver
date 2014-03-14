@@ -22,23 +22,10 @@
 				<include>*.bat</include>
 				<include>*.xml</include>
 			</includes>
-			<excludes>
-				<exclude>log4j*</exclude>
-			</excludes>
 		</fileSet>
 	</fileSets>
 
 	<files>
-		<file>
-			<source>../osgiserver-bootstrap/src/main/scripts/log4j-development.xml</source>
-			<outputDirectory>dist/lib</outputDirectory>
-			<filtered>true</filtered>
-		</file>
-		<file>
-			<source>../osgiserver-bootstrap/src/main/scripts/log4j-production.xml</source>
-			<outputDirectory>dist/lib</outputDirectory>
-			<filtered>true</filtered>
-		</file>
 		<file>
 			<source>../README.md</source>
 			<outputDirectory>dist</outputDirectory>
@@ -61,20 +48,23 @@
 			<source>../EMPTY</source>
 			<outputDirectory>dist/runtime_bundles</outputDirectory>
 		</file>
+		<file>
+			<source>../EMPTY</source>
+			<outputDirectory>dist/logs</outputDirectory>
+		</file>
 	</files>
 
+	<!-- since we use moduleSets to filter project artifacts, useProjectArtifact 
+		should be false -->
 	<dependencySets>
 		<dependencySet>
 			<outputDirectory>dist/lib</outputDirectory>
-			<!-- since we use moduleSets to filter project artifacts, useProjectArtifact 
-				should be false -->
 			<useProjectArtifact>false</useProjectArtifact>
 			<includes>
 				<include>org.apache.felix:org.apache.felix.framework</include>
 				<include>org.apache.felix:org.apache.felix.main</include>
 				<include>org.slf4j:slf4j-api</include>
-				<include>org.slf4j:slf4j-log4j12</include>
-				<include>log4j:log4j</include>
+				<include>ch.qos.logback:*</include>
 				<include>commons-io:commons-io</include>
 				<include>org.apache.commons:commons-lang3</include>
 			</includes>
@@ -83,8 +73,10 @@
 			<outputDirectory>dist/startup_bundles/00.logging</outputDirectory>
 			<useProjectArtifact>false</useProjectArtifact>
 			<includes>
-				<include>org.slf4j:*</include>
-				<include>log4j:log4j</include>
+				<include>org.slf4j:osgi-over-slf4j</include>
+				<include>org.slf4j:jcl-over-slf4j</include>
+				<include>org.slf4j:log4j-over-slf4j</include>
+				<include>org.slf4j:jul-to-slf4j</include>
 			</includes>
 		</dependencySet>
 		<dependencySet>
@@ -96,16 +88,18 @@
 			</includes>
 		</dependencySet>
 		<dependencySet>
-			<outputDirectory>dist/startup_bundles/02.felix</outputDirectory>
+			<outputDirectory>dist/startup_bundles/02.apachefelix</outputDirectory>
 			<useProjectArtifact>false</useProjectArtifact>
 			<includes>
 				<include>org.apache.felix:org.apache.felix.shell*</include>
 				<include>org.apache.felix:org.apache.felix.http*</include>
 				<include>org.apache.felix:org.apache.felix.scr</include>
 				<include>org.apache.felix:org.apache.felix.webconsole*</include>
-				<include>org.apache.felix:org.osgi.compendium</include>
+				<!-- <include>org.apache.felix:org.osgi.compendium</include> -->
+				<include>org.osgi:org.osgi.compendium</include>
 				<include>org.apache.felix:org.apache.felix.configadmin</include>
 				<include>org.apache.felix:org.apache.felix.log</include>
+				<include>de.twentyeleven.skysail:org.json-osgi</include>
 			</includes>
 		</dependencySet>
 		<dependencySet>
@@ -116,12 +110,28 @@
 			</includes>
 		</dependencySet>
 		<dependencySet>
+			<outputDirectory>dist/startup_bundles/04.jackson</outputDirectory>
+			<useProjectArtifact>false</useProjectArtifact>
+			<includes>
+				<include>com.fasterxml.jackson.core:*</include>
+			</includes>
+		</dependencySet>
+		<dependencySet>
+			<outputDirectory>dist/startup_bundles/10.springframework</outputDirectory>
+			<useProjectArtifact>false</useProjectArtifact>
+			<includes>
+				<include>org.springframework:*</include>
+				<include>org.springframework.osgi:*</include>
+				<include>org.aopalliance:*</include>
+				<include>net.sourceforge.cglib:com.springsource.net.sf.cglib</include>
+			</includes>
+		</dependencySet>
+		<dependencySet>
 			<outputDirectory>dist/startup_bundles/99.others</outputDirectory>
 			<useProjectArtifact>false</useProjectArtifact>
 			<includes>
 				<include>org.apache.felix:org.apache.felix.fileinstall</include>
-				<include>javax.mail:mail</include>
-				<include>de.twentyeleven.skysail:org.json-osgi</include>
+				<include>javax.mail:*</include>
 			</includes>
 		</dependencySet>
 	</dependencySets>
@@ -137,16 +147,6 @@
 			</includes>
 			<binaries>
 				<outputDirectory>dist/lib</outputDirectory>
-				<unpack>false</unpack>
-			</binaries>
-		</moduleSet>
-		<moduleSet>
-			<useAllReactorProjects>true</useAllReactorProjects>
-			<includes>
-				<include>com.github.ddth:osgiserver-bundle-log4j</include>
-			</includes>
-			<binaries>
-				<outputDirectory>dist/startup_bundles/00.logging</outputDirectory>
 				<unpack>false</unpack>
 			</binaries>
 		</moduleSet>

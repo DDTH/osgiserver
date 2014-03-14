@@ -9,14 +9,14 @@ Project home:
 
 ## License ##
 
-See [LICENSE.txt](LICENSE.txt) for details. Copyright (c) 2013 Thanh Ba Nguyen.
+See [LICENSE.txt](LICENSE.txt) for details. Copyright (c) 2013-2014 Thanh Ba Nguyen.
 
 Third party libraries are distributed under their own license(s).
 
 
 ## Release-notes ##
 
-Latest stable release: `1.0.0`.
+Latest stable release: `2.0.0`.
 
 See [RELEASE-NOTES.md](RELEASE-NOTES.md).
 
@@ -32,7 +32,7 @@ Note: Java 6 or higher is required!
 
 ### Install from source ###
 
-- Download application's source, either cloning github project or download the source package from [project release workspace](https://github.com/DDTH/osgiserver/releases).
+- Download application's source, either cloning github project or download the source package from [project release site](https://github.com/DDTH/osgiserver/releases).
 - Build with maven: `mvn clean package`.
 - The built binary package is available at `osgiserver-distribution/osgiserver-distribution-<version>-bin/dist`. You may copy it to your favourite location, e.g. `/usr/local/osgiserver`.
 
@@ -43,10 +43,10 @@ The binary package contains several files and directories:
 - [`LICENSE.txt`](LICENSE.txt): license information.
 - `bin`: directory contains start/stop scripts.
 - `lib`: directory contains the bootstrapper and its dependencies.
-- `log`: directory contains log files.
+- `logs`: directory contains log files.
 - `runtime_bundles`: during runtime, bundles copied into this folder are auto-deployed; on the other hand, bundles deleted from this folder are auto-uninstalled.
 - `startup_bundles`: bundles under this directory are auto-deployed upon startup.
-- `var`: used internally by Apache Felix.
+- `tmp`: directory to store temporary files.
 
 
 ## Start/Stop OSGi Server ##

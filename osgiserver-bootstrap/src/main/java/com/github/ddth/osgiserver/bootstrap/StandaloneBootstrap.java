@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -104,6 +105,10 @@ public class StandaloneBootstrap {
             throw new IllegalArgumentException("[" + OSGiSERVER_HOME.getAbsolutePath()
                     + "] is not a directory");
         }
+        
+        File tempDir = new File(OSGiSERVER_HOME, "tmp");
+        FileUtils.deleteQuietly(tempDir);
+        tempDir.mkdirs();
 
         final String PROP_OSGiSERVER_OSGI_PROPERTIES = "osgiserver.osgi.properties";
         String osgiserverOsgiProperties = System.getProperty(PROP_OSGiSERVER_OSGI_PROPERTIES);
