@@ -105,8 +105,9 @@
 		<dependencySet>
 			<outputDirectory>dist/startup_bundles/03.google</outputDirectory>
 			<useProjectArtifact>false</useProjectArtifact>
+			<useTransitiveFiltering>false</useTransitiveFiltering>
 			<includes>
-				<include>com.google.*</include>
+				<include>com.google.guava:*</include>
 			</includes>
 		</dependencySet>
 		<dependencySet>

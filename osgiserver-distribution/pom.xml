@@ -223,7 +223,7 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>16.0.1</version>
+			<version>[16.0,16.1)</version>
 		</dependency>
 
 		<!-- dist/startup_bundles/04.jackson -->
